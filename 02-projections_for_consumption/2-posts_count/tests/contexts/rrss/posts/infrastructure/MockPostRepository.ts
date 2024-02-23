@@ -18,6 +18,11 @@ export class MockPostRepository implements PostRepository {
 		return this.mockSearch() as Promise<Post | null>;
 	}
 
+	shouldSearchAndReturnNull(id: PostId): void {
+		this.mockSearch(id);
+		this.mockSearch.mockReturnValueOnce(null);
+	}
+
 	shouldSave(post: Post): void {
 		this.mockSave(post.toPrimitives());
 	}

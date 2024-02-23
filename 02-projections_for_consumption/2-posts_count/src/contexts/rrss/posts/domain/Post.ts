@@ -5,6 +5,7 @@ import { Clock } from "../../../shared/domain/Clock";
 import { PostContent } from "./PostContent";
 import { PostId } from "./PostId";
 import { PostLikes } from "./PostLikes";
+import { PostLikesIncrementedDomainEvent } from "./PostLikesIncrementedDomainEvent";
 import { PostPublishedDomainEvent } from "./PostPublishedDomainEvent";
 
 export class Post extends AggregateRoot {
@@ -41,5 +42,11 @@ export class Post extends AggregateRoot {
 			likes: this.likes.value,
 			createdAt: this.createdAt,
 		};
+	}
+
+	incrementLikes(): void {
+		this.likes = this.likes.increment();
+
+		this.record(new PostLikesIncrementedDomainEvent(this.id.value, this.likes.value));
 	}
 }
