@@ -10,6 +10,7 @@ type DatabaseUser = {
 	name: string;
 	email: string;
 	profile_picture: string;
+	status: string;
 };
 
 export class MySqlUserRepository implements UserRepository {
@@ -19,12 +20,13 @@ export class MySqlUserRepository implements UserRepository {
 		const userPrimitives = user.toPrimitives();
 
 		const query = `
-			INSERT INTO rrss__users (id, name, email, profile_picture)
+			INSERT INTO rrss__users (id, name, email, profile_picture, status)
 			VALUES (
 				'${userPrimitives.id}',
 				'${userPrimitives.name}',
 				'${userPrimitives.email}',
-				'${userPrimitives.profilePicture}'
+				'${userPrimitives.profilePicture}',
+				'${userPrimitives.status.valueOf()}'
 			);`;
 
 		await this.connection.execute(query);
@@ -44,6 +46,7 @@ export class MySqlUserRepository implements UserRepository {
 			name: result.name,
 			email: result.email,
 			profilePicture: result.profile_picture,
+			status: result.status,
 		});
 	}
 
@@ -62,6 +65,7 @@ export class MySqlUserRepository implements UserRepository {
 				name: user.name,
 				email: user.email,
 				profilePicture: user.profile_picture,
+				status: user.status,
 			}),
 		);
 	}

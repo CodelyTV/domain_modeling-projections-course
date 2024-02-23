@@ -1,15 +1,21 @@
 import { EventBus } from "../../../../shared/domain/event/EventBus";
-import { User } from "../../domain/User";
+import { UserFinder } from "../../domain/UserFinder";
 import { UserRepository } from "../../domain/UserRepository";
 
-export class UserRegistrar {
+export class UserArchiver {
+	private readonly finder: UserFinder;
+
 	constructor(
 		private readonly repository: UserRepository,
 		private readonly eventBus: EventBus,
-	) {}
+	) {
+		this.finder = new UserFinder(repository);
+	}
 
-	async registrar(id: string, name: string, email: string, profilePicture: string): Promise<void> {
-		const user = User.create(id, name, email, profilePicture);
+	async archive(id: string): Promise<void> {
+		const user = await this.finder.find(id);
+
+		user.archive();
 
 		await this.repository.save(user);
 		await this.eventBus.publish(user.pullDomainEvents());

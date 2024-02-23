@@ -1,6 +1,6 @@
 version: '3'
 services:
-  1-prepare_elastic-mysql:
+  mysql:
     image: mariadb:11
     restart: always
     environment:
