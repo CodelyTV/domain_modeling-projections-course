@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 
-import { UserName } from "../../../../../src/contexts/shop/users/domain/UserName";
+import { UserName } from "../../../../../src/contexts/rrss/users/domain/UserName";
 
 export class UserNameMother {
 	static create(value?: string): UserName {

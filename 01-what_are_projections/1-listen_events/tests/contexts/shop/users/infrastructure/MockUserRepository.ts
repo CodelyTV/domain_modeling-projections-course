@@ -1,7 +1,7 @@
+import { User } from "../../../../../src/contexts/rrss/users/domain/User";
+import { UserId } from "../../../../../src/contexts/rrss/users/domain/UserId";
+import { UserRepository } from "../../../../../src/contexts/rrss/users/domain/UserRepository";
 import { Criteria } from "../../../../../src/contexts/shared/domain/criteria/Criteria";
-import { User } from "../../../../../src/contexts/shop/users/domain/User";
-import { UserId } from "../../../../../src/contexts/shop/users/domain/UserId";
-import { UserRepository } from "../../../../../src/contexts/shop/users/domain/UserRepository";
 
 export class MockUserRepository implements UserRepository {
 	private readonly mockSave = jest.fn();

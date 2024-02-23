@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { UsersByCriteriaSearcher } from "../../../contexts/rrss/users/application/search_by_criteria/UsersByCriteriaSearcher";
+import { MySqlUserRepository } from "../../../contexts/rrss/users/infrastructure/MySqlUserRepository";
 import { SearchParamsCriteriaFiltersParser } from "../../../contexts/shared/infrastructure/criteria/SearchParamsCriteriaFiltersParser";
 import { MariaDBConnection } from "../../../contexts/shared/infrastructure/MariaDBConnection";
-import { UsersByCriteriaSearcher } from "../../../contexts/shop/users/application/search_by_criteria/UsersByCriteriaSearcher";
-import { MySqlUserRepository } from "../../../contexts/shop/users/infrastructure/MySqlUserRepository";
 
 const searcher = new UsersByCriteriaSearcher(new MySqlUserRepository(new MariaDBConnection()));
 

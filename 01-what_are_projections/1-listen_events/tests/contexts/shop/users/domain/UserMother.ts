@@ -1,4 +1,4 @@
-import { User, UserPrimitives } from "../../../../../src/contexts/shop/users/domain/User";
+import { User, UserPrimitives } from "../../../../../src/contexts/rrss/users/domain/User";
 import { UserEmailMother } from "./UserEmailMother";
 import { UserIdMother } from "./UserIdMother";
 import { UserNameMother } from "./UserNameMother";

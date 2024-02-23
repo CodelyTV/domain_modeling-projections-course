@@ -1,6 +1,6 @@
 import { Client } from "@elastic/elasticsearch";
 
-import { ElasticsearchUserRepository } from "../../../../../src/contexts/shop/users/infrastructure/ElasticsearchUserRepository";
+import { ElasticsearchUserRepository } from "../../../../../src/contexts/rrss/users/infrastructure/ElasticsearchUserRepository";
 import { CriteriaMother } from "../../../shared/domain/criteria/CriteriaMother";
 import { UserIdMother } from "../domain/UserIdMother";
 import { UserMother } from "../domain/UserMother";

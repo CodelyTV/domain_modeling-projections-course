@@ -1,4 +1,4 @@
-import { UserSearcher } from "../../../../../../src/contexts/shop/users/application/search/UserSearcher";
+import { UserSearcher } from "../../../../../../src/contexts/rrss/users/application/search/UserSearcher";
 import { UserIdMother } from "../../domain/UserIdMother";
 import { UserMother } from "../../domain/UserMother";
 import { MockUserRepository } from "../../infrastructure/MockUserRepository";

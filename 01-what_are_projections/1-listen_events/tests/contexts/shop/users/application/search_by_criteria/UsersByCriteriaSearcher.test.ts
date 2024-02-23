@@ -1,4 +1,4 @@
-import { UsersByCriteriaSearcher } from "../../../../../../src/contexts/shop/users/application/search_by_criteria/UsersByCriteriaSearcher";
+import { UsersByCriteriaSearcher } from "../../../../../../src/contexts/rrss/users/application/search_by_criteria/UsersByCriteriaSearcher";
 import { CriteriaMother } from "../../../../shared/domain/criteria/CriteriaMother";
 import { UserMother } from "../../domain/UserMother";
 import { MockUserRepository } from "../../infrastructure/MockUserRepository";

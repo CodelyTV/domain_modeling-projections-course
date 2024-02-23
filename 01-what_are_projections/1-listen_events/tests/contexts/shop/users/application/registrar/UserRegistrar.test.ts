@@ -1,4 +1,4 @@
-import { UserRegistrar } from "../../../../../../src/contexts/shop/users/application/registrar/UserRegistrar";
+import { UserRegistrar } from "../../../../../../src/contexts/rrss/users/application/registrar/UserRegistrar";
 import { UserMother } from "../../domain/UserMother";
 import { MockUserRepository } from "../../infrastructure/MockUserRepository";
 

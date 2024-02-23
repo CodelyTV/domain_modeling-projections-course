@@ -1,5 +1,5 @@
+import { MySqlUserRepository } from "../../../../../src/contexts/rrss/users/infrastructure/MySqlUserRepository";
 import { MariaDBConnection } from "../../../../../src/contexts/shared/infrastructure/MariaDBConnection";
-import { MySqlUserRepository } from "../../../../../src/contexts/shop/users/infrastructure/MySqlUserRepository";
 import { CriteriaMother } from "../../../shared/domain/criteria/CriteriaMother";
 import { UserIdMother } from "../domain/UserIdMother";
 import { UserMother } from "../domain/UserMother";
@@ -8,7 +8,7 @@ describe("MySqlUserRepository should", () => {
 	const connection = new MariaDBConnection();
 	const repository = new MySqlUserRepository(connection);
 
-	beforeEach(async () => await connection.truncate("shop__users"));
+	beforeEach(async () => await connection.truncate("rrss__users"));
 	afterAll(async () => await connection.close());
 
 	it("save a user", async () => {

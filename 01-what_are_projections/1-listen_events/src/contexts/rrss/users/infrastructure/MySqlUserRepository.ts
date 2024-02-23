@@ -19,7 +19,7 @@ export class MySqlUserRepository implements UserRepository {
 		const userPrimitives = user.toPrimitives();
 
 		const query = `
-			INSERT INTO shop__users (id, name, email, profile_picture)
+			INSERT INTO rrss__users (id, name, email, profile_picture)
 			VALUES (
 				'${userPrimitives.id}',
 				'${userPrimitives.name}',
@@ -31,7 +31,7 @@ export class MySqlUserRepository implements UserRepository {
 	}
 
 	async search(id: UserId): Promise<User | null> {
-		const query = `SELECT id, name, email, profile_picture FROM shop__users WHERE id = '${id.value}';`;
+		const query = `SELECT id, name, email, profile_picture FROM rrss__users WHERE id = '${id.value}';`;
 
 		const result = await this.connection.searchOne<DatabaseUser>(query);
 
@@ -51,7 +51,7 @@ export class MySqlUserRepository implements UserRepository {
 		const converter = new CriteriaToSqlConverter();
 
 		const result = await this.connection.searchAll<DatabaseUser>(
-			converter.convert(["id", "name", "email", "profile_picture"], "shop__users", criteria, {
+			converter.convert(["id", "name", "email", "profile_picture"], "rrss__users", criteria, {
 				fullname: "name",
 			}),
 		);
