@@ -8,7 +8,7 @@ export class PostPublisher {
 		private readonly eventBus: EventBus,
 	) {}
 
-	async registrar(id: string, content: string): Promise<void> {
+	async publish(id: string, content: string): Promise<void> {
 		const post = Post.publish(id, content);
 
 		await this.repository.save(post);

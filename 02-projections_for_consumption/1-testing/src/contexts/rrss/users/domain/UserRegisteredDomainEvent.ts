@@ -9,6 +9,7 @@ export class UserRegisteredDomainEvent extends UserDomainEvent {
 		public readonly name: string,
 		public readonly email: string,
 		public readonly profilePicture: string,
+		public readonly status: string,
 		eventId?: string,
 		occurredOn?: Date,
 	) {
@@ -26,6 +27,7 @@ export class UserRegisteredDomainEvent extends UserDomainEvent {
 			attributes.name as string,
 			attributes.email as string,
 			attributes.profilePicture as string,
+			attributes.status as string,
 			eventId,
 			occurredOn,
 		);
@@ -37,6 +39,7 @@ export class UserRegisteredDomainEvent extends UserDomainEvent {
 			name: this.name,
 			email: this.email,
 			profilePicture: this.profilePicture,
+			status: this.status,
 		};
 	}
 }
