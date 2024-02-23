@@ -18,7 +18,7 @@ describe("CreateRetentionUserOnUserRegistered should", () => {
 		await subscriber.on(event);
 	});
 
-	it("create a new retention user on user registered", async () => {
+	it("create a new retention user", async () => {
 		const event = UserRegisteredDomainEventMother.create();
 		const userId = UserIdMother.create(event.id);
 

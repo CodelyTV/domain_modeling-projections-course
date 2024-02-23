@@ -9,7 +9,7 @@ export type RetentionUserPrimitives = {
 export class RetentionUser {
 	constructor(
 		public readonly id: UserId,
-		public readonly email: string,
+		public email: string,
 		public readonly name: string,
 	) {}
 
@@ -27,5 +27,9 @@ export class RetentionUser {
 			email: this.email,
 			name: this.name,
 		};
+	}
+
+	updateEmail(email: string): void {
+		this.email = email;
 	}
 }
