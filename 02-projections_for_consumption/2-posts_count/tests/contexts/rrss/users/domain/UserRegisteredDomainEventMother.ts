@@ -22,6 +22,7 @@ export class UserRegisteredDomainEventMother {
 			primitives.name,
 			primitives.email,
 			primitives.profilePicture,
+			primitives.status,
 		);
 	}
 }

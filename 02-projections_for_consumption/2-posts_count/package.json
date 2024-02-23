@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "tests": "jest"
   },
   "dependencies": {
     "@elastic/elasticsearch": "^8.11.0",
