@@ -8,14 +8,20 @@ import { PostLikeIdMother } from "./PostLikeIdMother";
 
 export class PostLikedDomainEventMother {
 	static create(params?: Partial<Primitives<PostLike>>): PostLikedDomainEvent {
-		const primitives: Primitives<PostLike> = {
+		const primitives: Primitives<PostLike> & { postUserId: string } = {
 			id: PostLikeIdMother.create().value,
 			postId: PostIdMother.create().value,
 			userId: UserIdMother.create().value,
+			postUserId: UserIdMother.create().value,
 			likedAt: new Date(),
 			...params,
 		};
 
-		return new PostLikedDomainEvent(primitives.id, primitives.postId, primitives.userId);
+		return new PostLikedDomainEvent(
+			primitives.id,
+			primitives.postId,
+			primitives.userId,
+			primitives.postUserId,
+		);
 	}
 }

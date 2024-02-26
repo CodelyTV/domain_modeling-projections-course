@@ -14,17 +14,19 @@ describe("RecalculateRetentionUserAveragePostLikesOnPostLiked should", () => {
 
 	it("throw an exception if the user does not exist", async () => {
 		const event = PostLikedDomainEventMother.create();
-		const userId = UserIdMother.create(event.userId);
+		const userId = UserIdMother.create(event.postUserId);
 
 		repository.shouldSearchAndReturnNull(userId);
 
-		await expect(subscriber.on(event)).rejects.toThrow(new RetentionUserDoesNotExist(event.userId));
+		await expect(subscriber.on(event)).rejects.toThrow(
+			new RetentionUserDoesNotExist(event.postUserId),
+		);
 	});
 
 	it("recalculate average post likes for the first post like", async () => {
 		const event = PostLikedDomainEventMother.create();
 		const existingUser = RetentionUserMother.create({
-			id: event.userId,
+			id: event.postUserId,
 			totalPosts: 1,
 			averagePostLikes: 0,
 		});
@@ -43,7 +45,7 @@ describe("RecalculateRetentionUserAveragePostLikesOnPostLiked should", () => {
 	it("recalculate average post likes", async () => {
 		const event = PostLikedDomainEventMother.create();
 		const existingUser = RetentionUserMother.create({
-			id: event.userId,
+			id: event.postUserId,
 			totalPosts: 10,
 			averagePostLikes: 3,
 		});

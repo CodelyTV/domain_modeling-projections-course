@@ -7,6 +7,7 @@ export class PostLikedDomainEvent extends DomainEvent {
 		public readonly id: string,
 		public readonly postId: string,
 		public readonly userId: string,
+		public readonly postUserId: string,
 		eventId?: string,
 		occurredOn?: Date,
 	) {
@@ -23,6 +24,7 @@ export class PostLikedDomainEvent extends DomainEvent {
 			aggregateId,
 			attributes.postId as string,
 			attributes.userId as string,
+			attributes.postUserId as string,
 			eventId,
 			occurredOn,
 		);
@@ -33,6 +35,7 @@ export class PostLikedDomainEvent extends DomainEvent {
 			id: this.id,
 			postId: this.postId,
 			userId: this.userId,
+			postUserId: this.postUserId,
 		};
 	}
 }
