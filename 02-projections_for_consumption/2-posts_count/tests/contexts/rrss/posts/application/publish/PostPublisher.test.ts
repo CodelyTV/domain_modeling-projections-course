@@ -21,6 +21,10 @@ describe("PostPublisher should", () => {
 		repository.shouldSave(expectedPost);
 		eventBus.shouldPublish([expectedDomainEvent]);
 
-		await postPublisher.publish(expectedPostPrimitives.id, expectedPostPrimitives.content);
+		await postPublisher.publish(
+			expectedPostPrimitives.id,
+			expectedPostPrimitives.userId,
+			expectedPostPrimitives.content,
+		);
 	});
 });

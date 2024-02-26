@@ -10,8 +10,8 @@ export class PostPublisher {
 		private readonly eventBus: EventBus,
 	) {}
 
-	async publish(id: string, content: string): Promise<void> {
-		const post = Post.publish(id, content, this.clock);
+	async publish(id: string, userId: string, content: string): Promise<void> {
+		const post = Post.publish(id, userId, content, this.clock);
 
 		await this.repository.save(post);
 		await this.eventBus.publish(post.pullDomainEvents());

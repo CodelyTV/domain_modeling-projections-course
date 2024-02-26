@@ -14,7 +14,7 @@ export class RetentionUser {
 		public email: string,
 		public readonly name: string,
 		public totalPosts: number,
-		public readonly averagePostLikes: number,
+		public averagePostLikes: number,
 	) {}
 
 	static create(id: string, email: string, name: string): RetentionUser {
@@ -47,5 +47,13 @@ export class RetentionUser {
 
 	incrementTotalPosts(): void {
 		this.totalPosts = this.totalPosts + 1;
+	}
+
+	recalculateAveragePostLikes(): void {
+		const totalLikes = this.averagePostLikes * this.totalPosts;
+
+		const newTotalLikes = totalLikes + 1;
+
+		this.averagePostLikes = newTotalLikes / this.totalPosts;
 	}
 }
