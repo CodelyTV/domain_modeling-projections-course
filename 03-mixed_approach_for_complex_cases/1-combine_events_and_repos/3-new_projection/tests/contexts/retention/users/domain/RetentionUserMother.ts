@@ -3,7 +3,7 @@ import { faker } from "@faker-js/faker";
 import {
 	RetentionUser,
 	RetentionUserPrimitives,
-} from "../../../../../src/contexts/retention/user/domain/RetentionUser";
+} from "../../../../../src/contexts/retention/users/domain/RetentionUser";
 import { UserIdMother } from "../../../rrss/users/domain/UserIdMother";
 
 export class RetentionUserMother {

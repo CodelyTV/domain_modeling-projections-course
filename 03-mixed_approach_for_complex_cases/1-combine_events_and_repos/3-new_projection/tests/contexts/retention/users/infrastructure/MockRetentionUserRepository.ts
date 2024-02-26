@@ -1,5 +1,5 @@
-import { RetentionUser } from "../../../../../src/contexts/retention/user/domain/RetentionUser";
-import { RetentionUserRepository } from "../../../../../src/contexts/retention/user/domain/RetentionUserRepository";
+import { RetentionUser } from "../../../../../src/contexts/retention/users/domain/RetentionUser";
+import { RetentionUserRepository } from "../../../../../src/contexts/retention/users/domain/RetentionUserRepository";
 import { UserId } from "../../../../../src/contexts/rrss/users/domain/UserId";
 
 export class MockRetentionUserRepository implements RetentionUserRepository {

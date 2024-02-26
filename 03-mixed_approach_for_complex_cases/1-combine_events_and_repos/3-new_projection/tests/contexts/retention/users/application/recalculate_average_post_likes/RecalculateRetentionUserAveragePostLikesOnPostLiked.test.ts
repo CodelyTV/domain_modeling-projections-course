@@ -1,6 +1,6 @@
-import { RecalculateRetentionUserAveragePostLikesOnPostLiked } from "../../../../../../src/contexts/retention/user/application/recalculate_average_post_likes/RecalculateRetentionUserAveragePostLikesOnPostLiked";
-import { RetentionUserAveragePostLikesRecalculator } from "../../../../../../src/contexts/retention/user/application/recalculate_average_post_likes/RetentionUserAveragePostLikesRecalculator";
-import { RetentionUserDoesNotExist } from "../../../../../../src/contexts/retention/user/domain/RetentionUserDoesNotExist";
+import { RecalculateRetentionUserAveragePostLikesOnPostLiked } from "../../../../../../src/contexts/retention/users/application/recalculate_average_post_likes/RecalculateRetentionUserAveragePostLikesOnPostLiked";
+import { RetentionUserAveragePostLikesRecalculator } from "../../../../../../src/contexts/retention/users/application/recalculate_average_post_likes/RetentionUserAveragePostLikesRecalculator";
+import { RetentionUserDoesNotExist } from "../../../../../../src/contexts/retention/users/domain/RetentionUserDoesNotExist";
 import { PostLikedDomainEventMother } from "../../../../rrss/post_likes/domain/PostLikedDomainEventMother";
 import { UserIdMother } from "../../../../rrss/users/domain/UserIdMother";
 import { RetentionUserMother } from "../../domain/RetentionUserMother";

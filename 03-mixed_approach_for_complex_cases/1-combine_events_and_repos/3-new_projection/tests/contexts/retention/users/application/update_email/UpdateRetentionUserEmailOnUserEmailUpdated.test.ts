@@ -1,6 +1,6 @@
-import { RetentionUserEmailUpdater } from "../../../../../../src/contexts/retention/user/application/update_email/RetentionUserEmailUpdater";
-import { UpdateRetentionUserEmailOnUserEmailUpdated } from "../../../../../../src/contexts/retention/user/application/update_email/UpdateRetentionUserEmailOnUserEmailUpdated";
-import { RetentionUserDoesNotExist } from "../../../../../../src/contexts/retention/user/domain/RetentionUserDoesNotExist";
+import { RetentionUserEmailUpdater } from "../../../../../../src/contexts/retention/users/application/update_email/RetentionUserEmailUpdater";
+import { UpdateRetentionUserEmailOnUserEmailUpdated } from "../../../../../../src/contexts/retention/users/application/update_email/UpdateRetentionUserEmailOnUserEmailUpdated";
+import { RetentionUserDoesNotExist } from "../../../../../../src/contexts/retention/users/domain/RetentionUserDoesNotExist";
 import { UserEmailUpdatedDomainEventMother } from "../../../../rrss/users/domain/UserEmailUpdatedDomainEventMother";
 import { UserIdMother } from "../../../../rrss/users/domain/UserIdMother";
 import { RetentionUserMother } from "../../domain/RetentionUserMother";

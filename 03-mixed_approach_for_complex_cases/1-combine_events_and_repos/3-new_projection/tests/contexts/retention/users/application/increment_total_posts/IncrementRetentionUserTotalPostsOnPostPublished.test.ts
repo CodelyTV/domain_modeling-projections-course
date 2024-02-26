@@ -1,6 +1,6 @@
-import { IncrementRetentionUserTotalPostsOnPostPublished } from "../../../../../../src/contexts/retention/user/application/increment_total_posts/IncrementRetentionUserTotalPostsOnPostPublished";
-import { RetentionUserTotalPostsIncrementer } from "../../../../../../src/contexts/retention/user/application/increment_total_posts/RetentionUserTotalPostsIncrementer";
-import { RetentionUserDoesNotExist } from "../../../../../../src/contexts/retention/user/domain/RetentionUserDoesNotExist";
+import { IncrementRetentionUserTotalPostsOnPostPublished } from "../../../../../../src/contexts/retention/users/application/increment_total_posts/IncrementRetentionUserTotalPostsOnPostPublished";
+import { RetentionUserTotalPostsIncrementer } from "../../../../../../src/contexts/retention/users/application/increment_total_posts/RetentionUserTotalPostsIncrementer";
+import { RetentionUserDoesNotExist } from "../../../../../../src/contexts/retention/users/domain/RetentionUserDoesNotExist";
 import { PostPublishedDomainEventMother } from "../../../../rrss/posts/domain/PostPublishedDomainEventMother";
 import { UserIdMother } from "../../../../rrss/users/domain/UserIdMother";
 import { RetentionUserMother } from "../../domain/RetentionUserMother";

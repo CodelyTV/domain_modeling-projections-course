@@ -1,5 +1,5 @@
-import { CreateRetentionUserOnUserRegistered } from "../../../../../../src/contexts/retention/user/application/create/CreateRetentionUserOnUserRegistered";
-import { RetentionUserCreator } from "../../../../../../src/contexts/retention/user/application/create/RetentionUserCreator";
+import { CreateRetentionUserOnUserRegistered } from "../../../../../../src/contexts/retention/users/application/create/CreateRetentionUserOnUserRegistered";
+import { RetentionUserCreator } from "../../../../../../src/contexts/retention/users/application/create/RetentionUserCreator";
 import { UserIdMother } from "../../../../rrss/users/domain/UserIdMother";
 import { UserRegisteredDomainEventMother } from "../../../../rrss/users/domain/UserRegisteredDomainEventMother";
 import { RetentionUserMother } from "../../domain/RetentionUserMother";

@@ -10,7 +10,7 @@ export class RecalculateRetentionUserAveragePostLikesOnPostLiked
 	constructor(private readonly recalculator: RetentionUserAveragePostLikesRecalculator) {}
 
 	async on(event: PostLikedDomainEvent): Promise<void> {
-		await this.recalculator.recalculate(event.userId);
+		await this.recalculator.recalculate(event.postId);
 	}
 
 	subscribedTo(): DomainEventClass[] {
