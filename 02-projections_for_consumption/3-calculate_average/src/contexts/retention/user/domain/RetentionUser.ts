@@ -13,7 +13,7 @@ export class RetentionUser {
 		public readonly id: UserId,
 		public email: string,
 		public readonly name: string,
-		public readonly totalPosts: number,
+		public totalPosts: number,
 		public readonly averagePostLikes: number,
 	) {}
 
@@ -43,5 +43,9 @@ export class RetentionUser {
 
 	updateEmail(email: string): void {
 		this.email = email;
+	}
+
+	incrementTotalPosts(): void {
+		this.totalPosts = this.totalPosts + 1;
 	}
 }

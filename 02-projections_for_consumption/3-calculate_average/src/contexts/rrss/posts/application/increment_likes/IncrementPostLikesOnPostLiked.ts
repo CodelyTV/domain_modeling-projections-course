@@ -16,6 +16,6 @@ export class IncrementPostLikesOnPostLiked implements DomainEventSubscriber<User
 	}
 
 	name(): string {
-		return "codely.retention.create_retention_user_on_user_registered";
+		return "codely.rrss.increment_post_likes_on_post_liked";
 	}
 }
