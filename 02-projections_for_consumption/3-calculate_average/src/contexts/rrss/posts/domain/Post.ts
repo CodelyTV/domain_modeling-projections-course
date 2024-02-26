@@ -2,6 +2,7 @@ import { Primitives } from "@codelytv/primitives-type";
 
 import { AggregateRoot } from "../../../shared/domain/AggregateRoot";
 import { Clock } from "../../../shared/domain/Clock";
+import { UserId } from "../../users/domain/UserId";
 import { PostContent } from "./PostContent";
 import { PostId } from "./PostId";
 import { PostLikes } from "./PostLikes";
@@ -11,6 +12,7 @@ import { PostPublishedDomainEvent } from "./PostPublishedDomainEvent";
 export class Post extends AggregateRoot {
 	private constructor(
 		public readonly id: PostId,
+		public readonly userId: UserId,
 		public readonly content: PostContent,
 		public likes: PostLikes,
 		public readonly createdAt: Date,
@@ -18,10 +20,16 @@ export class Post extends AggregateRoot {
 		super();
 	}
 
-	static publish(id: string, content: string, clock: Clock): Post {
-		const post = new Post(new PostId(id), new PostContent(content), PostLikes.init(), clock.now());
+	static publish(id: string, userId: string, content: string, clock: Clock): Post {
+		const post = new Post(
+			new PostId(id),
+			new UserId(userId),
+			new PostContent(content),
+			PostLikes.init(),
+			clock.now(),
+		);
 
-		post.record(new PostPublishedDomainEvent(id, content));
+		post.record(new PostPublishedDomainEvent(id, userId, content));
 
 		return post;
 	}
@@ -29,6 +37,7 @@ export class Post extends AggregateRoot {
 	static fromPrimitives(primitives: Primitives<Post>): Post {
 		return new Post(
 			new PostId(primitives.id),
+			new UserId(primitives.userId),
 			new PostContent(primitives.content),
 			new PostLikes(primitives.likes),
 			primitives.createdAt as Date,
@@ -38,6 +47,7 @@ export class Post extends AggregateRoot {
 	toPrimitives(): Primitives<Post> {
 		return {
 			id: this.id.value,
+			userId: this.userId.value,
 			content: this.content.value,
 			likes: this.likes.value,
 			createdAt: this.createdAt,

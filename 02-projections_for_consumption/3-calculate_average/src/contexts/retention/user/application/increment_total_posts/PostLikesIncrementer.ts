@@ -1,17 +1,22 @@
-import { Clock } from "../../../../shared/domain/Clock";
 import { EventBus } from "../../../../shared/domain/event/EventBus";
-import { Post } from "../../domain/Post";
+import { PostDoesNotExist } from "../../domain/PostDoesNotExist";
+import { PostId } from "../../domain/PostId";
 import { PostRepository } from "../../domain/PostRepository";
 
-export class PostPublisher {
+export class PostLikesIncrementer {
 	constructor(
-		private readonly clock: Clock,
 		private readonly repository: PostRepository,
 		private readonly eventBus: EventBus,
 	) {}
 
-	async publish(id: string, userId: string, content: string): Promise<void> {
-		const post = Post.publish(id, userId, content, this.clock);
+	async increment(id: string): Promise<void> {
+		const post = await this.repository.search(new PostId(id));
+
+		if (!post) {
+			throw new PostDoesNotExist(id);
+		}
+
+		post.incrementLikes();
 
 		await this.repository.save(post);
 		await this.eventBus.publish(post.pullDomainEvents());

@@ -5,6 +5,7 @@ export class PostPublishedDomainEvent extends DomainEvent {
 
 	constructor(
 		public readonly id: string,
+		public readonly userId: string,
 		public readonly content: string,
 		eventId?: string,
 		occurredOn?: Date,
@@ -21,6 +22,7 @@ export class PostPublishedDomainEvent extends DomainEvent {
 		return new PostPublishedDomainEvent(
 			aggregateId,
 			attributes.content as string,
+			attributes.userId as string,
 			eventId,
 			occurredOn,
 		);
@@ -29,6 +31,7 @@ export class PostPublishedDomainEvent extends DomainEvent {
 	toPrimitives(): DomainEventAttributes {
 		return {
 			id: this.id,
+			userId: this.userId,
 			content: this.content,
 		};
 	}
