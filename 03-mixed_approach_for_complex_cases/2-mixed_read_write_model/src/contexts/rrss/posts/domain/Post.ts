@@ -5,6 +5,7 @@ import { Clock } from "../../../shared/domain/Clock";
 import { UserId } from "../../users/domain/UserId";
 import { PostContent } from "./PostContent";
 import { PostId } from "./PostId";
+import { PostLatestLikes } from "./PostLatestLikes";
 import { PostLikesIncrementedDomainEvent } from "./PostLikesIncrementedDomainEvent";
 import { PostPublishedDomainEvent } from "./PostPublishedDomainEvent";
 import { PostTotalLikes } from "./PostTotalLikes";
@@ -15,6 +16,7 @@ export class Post extends AggregateRoot {
 		public readonly userId: UserId,
 		public readonly content: PostContent,
 		public totalLikes: PostTotalLikes,
+		public latestLikes: PostLatestLikes,
 		public readonly createdAt: Date,
 	) {
 		super();
@@ -26,6 +28,7 @@ export class Post extends AggregateRoot {
 			new UserId(userId),
 			new PostContent(content),
 			PostTotalLikes.init(),
+			PostLatestLikes.init(),
 			clock.now(),
 		);
 
@@ -40,6 +43,7 @@ export class Post extends AggregateRoot {
 			new UserId(primitives.userId),
 			new PostContent(primitives.content),
 			new PostTotalLikes(primitives.totalLikes),
+			PostLatestLikes.fromPrimitives(primitives.latestLikes),
 			primitives.createdAt as Date,
 		);
 	}
@@ -50,6 +54,7 @@ export class Post extends AggregateRoot {
 			userId: this.userId.value,
 			content: this.content.value,
 			totalLikes: this.totalLikes.value,
+			latestLikes: this.latestLikes.toPrimitives(),
 			createdAt: this.createdAt,
 		};
 	}

@@ -1,7 +1,7 @@
 import { RetentionPostFinder } from "../../../../../../src/contexts/retention/posts/application/find/RetentionPostFinder";
 import { RetentionPostDoesNotExist } from "../../../../../../src/contexts/retention/posts/domain/RetentionPostDoesNotExist";
 import { PostIdMother } from "../../../../rrss/posts/domain/PostIdMother";
-import { PostMother } from "../../../../rrss/posts/domain/PostMother";
+import { RetentionPostMother } from "../../domain/RetentionPostMother";
 import { MockRetentionPostRepository } from "../../infrastructure/MockRetentionPostRepository";
 
 describe("RetentionPostFinder should", () => {
@@ -17,7 +17,7 @@ describe("RetentionPostFinder should", () => {
 	});
 
 	it("return an existing post", async () => {
-		const post = PostMother.create();
+		const post = RetentionPostMother.create();
 
 		repository.shouldSearch(post);
 

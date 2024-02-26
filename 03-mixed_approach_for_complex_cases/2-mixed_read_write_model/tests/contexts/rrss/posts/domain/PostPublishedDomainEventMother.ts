@@ -5,6 +5,7 @@ import { PostPublishedDomainEvent } from "../../../../../src/contexts/rrss/posts
 import { UserIdMother } from "../../users/domain/UserIdMother";
 import { PostContentMother } from "./PostContentMother";
 import { PostIdMother } from "./PostIdMother";
+import { PostLatestLikesMother } from "./PostLatestLikesMother";
 import { PostLikesMother } from "./PostLikesMother";
 
 export class PostPublishedDomainEventMother {
@@ -14,6 +15,7 @@ export class PostPublishedDomainEventMother {
 			userId: UserIdMother.create().value,
 			content: PostContentMother.create().value,
 			totalLikes: PostLikesMother.create().value,
+			latestLikes: PostLatestLikesMother.empty().toPrimitives(),
 			createdAt: new Date(),
 			...params,
 		};

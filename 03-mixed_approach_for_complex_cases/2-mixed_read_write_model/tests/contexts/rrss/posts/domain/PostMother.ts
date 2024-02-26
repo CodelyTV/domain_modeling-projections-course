@@ -4,6 +4,7 @@ import { Post } from "../../../../../src/contexts/rrss/posts/domain/Post";
 import { UserIdMother } from "../../users/domain/UserIdMother";
 import { PostContentMother } from "./PostContentMother";
 import { PostIdMother } from "./PostIdMother";
+import { PostLatestLikesMother } from "./PostLatestLikesMother";
 import { PostLikesMother } from "./PostLikesMother";
 
 export class PostMother {
@@ -13,6 +14,7 @@ export class PostMother {
 			userId: UserIdMother.create().value,
 			content: PostContentMother.create().value,
 			totalLikes: PostLikesMother.create().value,
+			latestLikes: PostLatestLikesMother.empty().toPrimitives(),
 			createdAt: new Date(),
 			...params,
 		};
