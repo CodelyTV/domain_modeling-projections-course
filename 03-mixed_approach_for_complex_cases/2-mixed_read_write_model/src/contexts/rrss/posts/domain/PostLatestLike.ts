@@ -9,6 +9,16 @@ export class PostLatestLike {
 		public readonly likedAt: Date,
 	) {}
 
+	static create(
+		id: string,
+		userId: string,
+		userName: string,
+		profilePictureUrl: string,
+		likedAt: Date,
+	): PostLatestLike {
+		return new PostLatestLike(id, userId, userName, profilePictureUrl, likedAt);
+	}
+
 	static fromPrimitives(primitives: Primitives<PostLatestLike>): PostLatestLike {
 		return new PostLatestLike(
 			primitives.id as string,

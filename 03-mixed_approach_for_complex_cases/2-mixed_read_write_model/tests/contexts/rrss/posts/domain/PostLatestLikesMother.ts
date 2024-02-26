@@ -8,6 +8,10 @@ export class PostLatestLikesMother {
 		return PostLatestLikes.fromPrimitives({ latestLikes });
 	}
 
+	static one(latestLikes: Primitives<PostLatestLike>): PostLatestLikes {
+		return PostLatestLikes.fromPrimitives({ latestLikes: [latestLikes] });
+	}
+
 	static empty(): PostLatestLikes {
 		return PostLatestLikes.fromPrimitives({ latestLikes: [] });
 	}

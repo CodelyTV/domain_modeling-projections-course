@@ -10,7 +10,7 @@ describe("UserSearcher should", () => {
 	it("return null searching a non existing user", async () => {
 		const userId = UserIdMother.create();
 
-		repository.shouldNotSearch(userId);
+		repository.shouldSearchAndReturnNull(userId);
 
 		expect(await userSearcher.search(userId.value)).toBeNull();
 	});

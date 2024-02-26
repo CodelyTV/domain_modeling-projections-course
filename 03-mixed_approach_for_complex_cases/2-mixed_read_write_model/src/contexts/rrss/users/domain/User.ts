@@ -19,10 +19,10 @@ export type UserPrimitives = {
 export class User extends AggregateRoot {
 	private constructor(
 		public readonly id: UserId,
-		private readonly name: UserName,
-		private email: UserEmail,
-		private readonly profilePicture: UserProfilePicture,
-		private status: UserStatus,
+		public readonly name: UserName,
+		public email: UserEmail,
+		public readonly profilePicture: UserProfilePicture,
+		public status: UserStatus,
 	) {
 		super();
 	}

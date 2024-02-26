@@ -40,7 +40,7 @@ export class MockUserRepository implements UserRepository {
 		this.mockSearch.mockReturnValueOnce(user);
 	}
 
-	shouldNotSearch(id: UserId): void {
+	shouldSearchAndReturnNull(id: UserId): void {
 		this.mockSearch(id);
 		this.mockSearch.mockReturnValueOnce(null);
 	}
