@@ -59,7 +59,7 @@ export class Post extends AggregateRoot {
 		};
 	}
 
-	incrementLikes(): void {
+	incrementTotalLikes(): void {
 		this.totalLikes = this.totalLikes.increment();
 
 		this.record(new PostLikesIncrementedDomainEvent(this.id.value, this.totalLikes.value));

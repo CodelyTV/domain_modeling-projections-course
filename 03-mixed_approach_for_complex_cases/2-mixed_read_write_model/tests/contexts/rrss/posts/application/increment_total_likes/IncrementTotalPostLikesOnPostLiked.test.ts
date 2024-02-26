@@ -1,5 +1,5 @@
-import { IncrementPostLikesOnPostLiked } from "../../../../../../src/contexts/rrss/posts/application/increment_likes/IncrementPostLikesOnPostLiked";
-import { PostLikesIncrementer } from "../../../../../../src/contexts/rrss/posts/application/increment_likes/PostLikesIncrementer";
+import { IncrementTotalPostLikesOnPostLiked } from "../../../../../../src/contexts/rrss/posts/application/increment_total_likes/IncrementTotalPostLikesOnPostLiked";
+import { TotalPostLikesIncrementer } from "../../../../../../src/contexts/rrss/posts/application/increment_total_likes/TotalPostLikesIncrementer";
 import { PostDoesNotExist } from "../../../../../../src/contexts/rrss/posts/domain/PostDoesNotExist";
 import { MockEventBus } from "../../../../shared/infrastructure/MockEventBus";
 import { PostLikedDomainEventMother } from "../../../post_likes/domain/PostLikedDomainEventMother";
@@ -8,12 +8,12 @@ import { PostLikesIncrementedDomainEventMother } from "../../domain/PostLikesInc
 import { PostMother } from "../../domain/PostMother";
 import { MockPostRepository } from "../../infrastructure/MockPostRepository";
 
-describe("IncrementPostLikesOnPostLiked should", () => {
+describe("IncrementTotalPostLikesOnPostLiked should", () => {
 	const repository = new MockPostRepository();
 	const eventBus = new MockEventBus();
 
-	const subscriber = new IncrementPostLikesOnPostLiked(
-		new PostLikesIncrementer(repository, eventBus),
+	const subscriber = new IncrementTotalPostLikesOnPostLiked(
+		new TotalPostLikesIncrementer(repository, eventBus),
 	);
 
 	it("throw an exception if the post does not exist", async () => {

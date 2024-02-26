@@ -2,10 +2,10 @@ import { UserDomainEvent } from "../../../../rrss/users/domain/UserDomainEvent";
 import { DomainEventClass } from "../../../../shared/domain/event/DomainEventClass";
 import { DomainEventSubscriber } from "../../../../shared/domain/event/DomainEventSubscriber";
 import { PostLikedDomainEvent } from "../../../post_likes/domain/PostLikedDomainEvent";
-import { PostLikesIncrementer } from "./PostLikesIncrementer";
+import { TotalPostLikesIncrementer } from "./TotalPostLikesIncrementer";
 
-export class IncrementPostLikesOnPostLiked implements DomainEventSubscriber<UserDomainEvent> {
-	constructor(private readonly incrementer: PostLikesIncrementer) {}
+export class IncrementTotalPostLikesOnPostLiked implements DomainEventSubscriber<UserDomainEvent> {
+	constructor(private readonly incrementer: TotalPostLikesIncrementer) {}
 
 	async on(event: PostLikedDomainEvent): Promise<void> {
 		await this.incrementer.increment(event.postId);
@@ -16,6 +16,6 @@ export class IncrementPostLikesOnPostLiked implements DomainEventSubscriber<User
 	}
 
 	name(): string {
-		return "codely.rrss.increment_post_likes_on_post_liked";
+		return "codely.rrss.increment_total_post_likes_on_post_liked";
 	}
 }

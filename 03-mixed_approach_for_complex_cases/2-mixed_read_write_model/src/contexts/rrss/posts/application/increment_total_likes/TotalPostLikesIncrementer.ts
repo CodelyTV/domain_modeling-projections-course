@@ -3,7 +3,7 @@ import { PostDoesNotExist } from "../../domain/PostDoesNotExist";
 import { PostId } from "../../domain/PostId";
 import { PostRepository } from "../../domain/PostRepository";
 
-export class PostLikesIncrementer {
+export class TotalPostLikesIncrementer {
 	constructor(
 		private readonly repository: PostRepository,
 		private readonly eventBus: EventBus,
@@ -16,7 +16,7 @@ export class PostLikesIncrementer {
 			throw new PostDoesNotExist(id);
 		}
 
-		post.incrementLikes();
+		post.incrementTotalLikes();
 
 		await this.repository.save(post);
 		await this.eventBus.publish(post.pullDomainEvents());
