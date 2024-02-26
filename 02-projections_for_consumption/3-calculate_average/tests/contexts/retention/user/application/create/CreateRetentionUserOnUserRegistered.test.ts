@@ -22,7 +22,7 @@ describe("CreateRetentionUserOnUserRegistered should", () => {
 		const event = UserRegisteredDomainEventMother.create();
 		const userId = UserIdMother.create(event.id);
 
-		const user = RetentionUserMother.create({
+		const user = RetentionUserMother.withoutPosts({
 			id: event.id,
 			email: event.email,
 			name: event.name,
