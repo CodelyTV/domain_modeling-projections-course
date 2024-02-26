@@ -29,7 +29,7 @@ describe("IncrementPostLikesOnPostLiked should", () => {
 		const event = PostLikedDomainEventMother.create();
 		const existingPost = PostMother.create({ id: event.postId });
 
-		const expectedLikes = existingPost.likes.value + 1;
+		const expectedLikes = existingPost.totalLikes.value + 1;
 
 		const expectedDomainEvent = PostLikesIncrementedDomainEventMother.create({
 			id: event.postId,
@@ -38,7 +38,7 @@ describe("IncrementPostLikesOnPostLiked should", () => {
 
 		repository.shouldSearch(existingPost);
 		repository.shouldSave(
-			PostMother.create({ ...existingPost.toPrimitives(), likes: expectedLikes }),
+			PostMother.create({ ...existingPost.toPrimitives(), totalLikes: expectedLikes }),
 		);
 		eventBus.shouldPublish([expectedDomainEvent]);
 

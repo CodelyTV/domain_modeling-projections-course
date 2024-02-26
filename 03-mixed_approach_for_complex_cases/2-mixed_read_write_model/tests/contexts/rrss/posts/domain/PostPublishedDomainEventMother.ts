@@ -13,7 +13,7 @@ export class PostPublishedDomainEventMother {
 			id: PostIdMother.create().value,
 			userId: UserIdMother.create().value,
 			content: PostContentMother.create().value,
-			likes: PostLikesMother.create().value,
+			totalLikes: PostLikesMother.create().value,
 			createdAt: new Date(),
 			...params,
 		};

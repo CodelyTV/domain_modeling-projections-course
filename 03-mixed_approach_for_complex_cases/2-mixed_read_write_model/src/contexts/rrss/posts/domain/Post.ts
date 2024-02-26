@@ -5,16 +5,16 @@ import { Clock } from "../../../shared/domain/Clock";
 import { UserId } from "../../users/domain/UserId";
 import { PostContent } from "./PostContent";
 import { PostId } from "./PostId";
-import { PostLikes } from "./PostLikes";
 import { PostLikesIncrementedDomainEvent } from "./PostLikesIncrementedDomainEvent";
 import { PostPublishedDomainEvent } from "./PostPublishedDomainEvent";
+import { PostTotalLikes } from "./PostTotalLikes";
 
 export class Post extends AggregateRoot {
 	private constructor(
 		public readonly id: PostId,
 		public readonly userId: UserId,
 		public readonly content: PostContent,
-		public likes: PostLikes,
+		public totalLikes: PostTotalLikes,
 		public readonly createdAt: Date,
 	) {
 		super();
@@ -25,7 +25,7 @@ export class Post extends AggregateRoot {
 			new PostId(id),
 			new UserId(userId),
 			new PostContent(content),
-			PostLikes.init(),
+			PostTotalLikes.init(),
 			clock.now(),
 		);
 
@@ -39,7 +39,7 @@ export class Post extends AggregateRoot {
 			new PostId(primitives.id),
 			new UserId(primitives.userId),
 			new PostContent(primitives.content),
-			new PostLikes(primitives.likes),
+			new PostTotalLikes(primitives.totalLikes),
 			primitives.createdAt as Date,
 		);
 	}
@@ -49,14 +49,14 @@ export class Post extends AggregateRoot {
 			id: this.id.value,
 			userId: this.userId.value,
 			content: this.content.value,
-			likes: this.likes.value,
+			totalLikes: this.totalLikes.value,
 			createdAt: this.createdAt,
 		};
 	}
 
 	incrementLikes(): void {
-		this.likes = this.likes.increment();
+		this.totalLikes = this.totalLikes.increment();
 
-		this.record(new PostLikesIncrementedDomainEvent(this.id.value, this.likes.value));
+		this.record(new PostLikesIncrementedDomainEvent(this.id.value, this.totalLikes.value));
 	}
 }

@@ -12,7 +12,7 @@ describe("PostPublisher should", () => {
 	const postPublisher = new PostPublisher(clock, repository, eventBus);
 
 	it("publish a valid post", async () => {
-		const expectedPost = PostMother.create({ likes: 0 });
+		const expectedPost = PostMother.create({ totalLikes: 0 });
 		const expectedPostPrimitives = expectedPost.toPrimitives();
 
 		const expectedDomainEvent = PostPublishedDomainEventMother.create(expectedPostPrimitives);
