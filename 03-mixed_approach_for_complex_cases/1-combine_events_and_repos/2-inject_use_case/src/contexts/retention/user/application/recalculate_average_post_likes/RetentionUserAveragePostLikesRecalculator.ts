@@ -1,15 +1,19 @@
-import { UserId } from "../../../../rrss/users/domain/UserId";
+import { PostFinder } from "../../../../rrss/posts/application/find/PostFinder";
 import { RetentionUserDoesNotExist } from "../../domain/RetentionUserDoesNotExist";
 import { RetentionUserRepository } from "../../domain/RetentionUserRepository";
 
 export class RetentionUserAveragePostLikesRecalculator {
-	constructor(private readonly repository: RetentionUserRepository) {}
+	constructor(
+		private readonly finder: PostFinder,
+		private readonly repository: RetentionUserRepository,
+	) {}
 
-	async recalculate(id: string): Promise<void> {
-		const user = await this.repository.search(new UserId(id));
+	async recalculate(postId: string): Promise<void> {
+		const post = await this.finder.find(postId);
+		const user = await this.repository.search(post.userId);
 
 		if (!user) {
-			throw new RetentionUserDoesNotExist(id);
+			throw new RetentionUserDoesNotExist(post.userId.value);
 		}
 
 		user.recalculateAveragePostLikes();
