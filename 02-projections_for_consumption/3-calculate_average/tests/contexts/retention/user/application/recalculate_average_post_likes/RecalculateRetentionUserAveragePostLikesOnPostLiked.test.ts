@@ -1,7 +1,7 @@
 import { RecalculateRetentionUserAveragePostLikesOnPostLiked } from "../../../../../../src/contexts/retention/user/application/recalculate_average_post_likes/RecalculateRetentionUserAveragePostLikesOnPostLiked";
 import { RetentionUserAveragePostLikesRecalculator } from "../../../../../../src/contexts/retention/user/application/recalculate_average_post_likes/RetentionUserAveragePostLikesRecalculator";
 import { RetentionUserDoesNotExist } from "../../../../../../src/contexts/retention/user/domain/RetentionUserDoesNotExist";
-import { PostPublishedDomainEventMother } from "../../../../rrss/posts/domain/PostPublishedDomainEventMother";
+import { PostLikedDomainEventMother } from "../../../../rrss/post_likes/domain/PostLikedDomainEventMother";
 import { UserIdMother } from "../../../../rrss/users/domain/UserIdMother";
 import { RetentionUserMother } from "../../domain/RetentionUserMother";
 import { MockRetentionUserRepository } from "../../infrastructure/MockRetentionUserRepository";
@@ -13,7 +13,7 @@ describe("RecalculateRetentionUserAveragePostLikesOnPostLiked should", () => {
 	);
 
 	it("throw an exception if the user does not exist", async () => {
-		const event = PostPublishedDomainEventMother.create();
+		const event = PostLikedDomainEventMother.create();
 		const userId = UserIdMother.create(event.userId);
 
 		repository.shouldSearchAndReturnNull(userId);
@@ -22,7 +22,7 @@ describe("RecalculateRetentionUserAveragePostLikesOnPostLiked should", () => {
 	});
 
 	it("recalculate average post likes for the first post like", async () => {
-		const event = PostPublishedDomainEventMother.create();
+		const event = PostLikedDomainEventMother.create();
 		const existingUser = RetentionUserMother.create({
 			id: event.userId,
 			totalPosts: 1,
@@ -41,7 +41,7 @@ describe("RecalculateRetentionUserAveragePostLikesOnPostLiked should", () => {
 	});
 
 	it("recalculate average post likes", async () => {
-		const event = PostPublishedDomainEventMother.create();
+		const event = PostLikedDomainEventMother.create();
 		const existingUser = RetentionUserMother.create({
 			id: event.userId,
 			totalPosts: 10,

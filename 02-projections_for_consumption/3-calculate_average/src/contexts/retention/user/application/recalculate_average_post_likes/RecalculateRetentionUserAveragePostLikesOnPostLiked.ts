@@ -1,4 +1,4 @@
-import { PostPublishedDomainEvent } from "../../../../rrss/posts/domain/PostPublishedDomainEvent";
+import { PostLikedDomainEvent } from "../../../../rrss/post_likes/domain/PostLikedDomainEvent";
 import { UserDomainEvent } from "../../../../rrss/users/domain/UserDomainEvent";
 import { DomainEventClass } from "../../../../shared/domain/event/DomainEventClass";
 import { DomainEventSubscriber } from "../../../../shared/domain/event/DomainEventSubscriber";
@@ -9,12 +9,12 @@ export class RecalculateRetentionUserAveragePostLikesOnPostLiked
 {
 	constructor(private readonly recalculator: RetentionUserAveragePostLikesRecalculator) {}
 
-	async on(event: PostPublishedDomainEvent): Promise<void> {
+	async on(event: PostLikedDomainEvent): Promise<void> {
 		await this.recalculator.recalculate(event.userId);
 	}
 
 	subscribedTo(): DomainEventClass[] {
-		return [PostPublishedDomainEvent];
+		return [PostLikedDomainEvent];
 	}
 
 	name(): string {
